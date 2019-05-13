@@ -1,0 +1,18 @@
+version: '3'
+services:
+
+    postgres:
+        image: postgres:alpine
+        restart: on-failure
+        environment:
+            POSTGRES_USER: "postgres"
+            POSTGRES_PASSWORD: "devpass"
+            POSTGRES_DB: "core"
+        ports:
+            - "127.0.0.1:5433:5432"
+
+    nps:
+        build: ./
+        restart: on-failure
+        ports:
+            - "127.0.0.1:58001:58001"
